@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
  *
  * This component represents the navigation bar of the application.
  *
- * @returns {JSX.Element} - The JSX element representing the Navbar.
+ * @returns - The JSX element representing the Navbar.
  */
 const Navbar: React.FC = () => <nav className={[styles.navbar, inter.className].join(' ')}>
   <div className={styles.logo}>
