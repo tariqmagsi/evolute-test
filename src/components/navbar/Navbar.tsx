@@ -1,6 +1,6 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
-import styles from './Navbar.module.css';
+import styles from '@/Navbar/Navbar.module.css';
 import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })

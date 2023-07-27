@@ -3,8 +3,6 @@ import type { AppProps } from 'next/app'
 import Layout from '@/pages/_layout';
 import 'tailwindcss/tailwind.css';
 
-
-
 /**
  * App Component
  *
