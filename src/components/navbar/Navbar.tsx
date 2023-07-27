@@ -14,7 +14,7 @@ export interface NavBarProps {}
  *
  * @returns {JSX.Element} - The JSX element representing the Navbar.
  */
-const NavBar: React.FC<NavBarProps> = () => <nav className={[styles.navbar, inter.className].join(' ')}>
+const Navbar: React.FC<NavBarProps> = () => <nav className={[styles.navbar, inter.className].join(' ')}>
   <div className={styles.logo}>
     <Link href="/">Evolute Test</Link>
   </div>
@@ -26,4 +26,4 @@ const NavBar: React.FC<NavBarProps> = () => <nav className={[styles.navbar, inte
   </ul>
 </nav>
 
-export default NavBar;
+export default Navbar;

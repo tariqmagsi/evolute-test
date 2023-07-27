@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Footer from '@/components/footer/Footer';
-import NavBar from '@/components/navbar/NavBar';
+import Navbar from '@/components/navbar/Navbar';
 
 /** 
  * Layout Component
@@ -13,7 +13,7 @@ import NavBar from '@/components/navbar/NavBar';
  */
 const Layout: React.FC<PropsWithChildren> = ({ children }) => (
   <>
-    <NavBar />
+    <Navbar />
     <main>
       <ToastContainer position='bottom-left'/>
       {children}
