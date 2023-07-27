@@ -1,12 +1,18 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
-import { NavBarProps } from './Navbar.type'
-import styles from './Navbar.module.css'
+import styles from './Navbar.module.css';
 import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const NavBar: React.FC<NavBarProps> = () => <nav className={[styles.navbar, inter.className].join(' ')}>
+/**
+ * Navbar Component
+ *
+ * This component represents the navigation bar of the application.
+ *
+ * @returns {JSX.Element} - The JSX element representing the Navbar.
+ */
+const Navbar: React.FC = () => <nav className={[styles.navbar, inter.className].join(' ')}>
   <div className={styles.logo}>
     <Link href="/">Evolute Test</Link>
   </div>
@@ -18,4 +24,4 @@ const NavBar: React.FC<NavBarProps> = () => <nav className={[styles.navbar, inte
   </ul>
 </nav>
 
-export default NavBar;
+export default Navbar;

@@ -1,35 +1,53 @@
 import charactersData from '@/data/evo-task-data.json';
+import { Character } from '@/types/global.type';
 
-//get all characters
+/**
+ * Get Characters List
+ *
+ * @param {number} page - The current page of characters list.
+ * @param {number} pageSize - The number of characters per page.
+ * @returns {Object} - An object containing the characters list and the total number of characters.
+ */
 export function getCharacters(page: number, pageSize: number) {
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    const characters = charactersData.slice(startIndex, endIndex);
+    const characters: Character[] = charactersData.slice(startIndex, endIndex);
 
-    if (characters.length === 0) {
-        throw new Error('No characters found.');
-    }
-
-    return characters;
+    return {characters, totalCharacter: charactersData.length};
 }
 
-//get top 3 characters appeared in most episodes
+/**
+ * Get Character
+ *
+ * @param {number} id - The ID of the character.
+ * @returns {Character | undefined | null} - The character data, or undefined if the character is not found.
+ */
+export function getCharacter(id: number) {
+    const character = charactersData.find(char => char.id === id);
+    
+    return character;
+}
+
+
+/**
+ * Get top 3 characters appeared in most episodes
+ *
+ * @returns {Character[]} - An array of the top 3 characters that appeared in the most episodes.
+ */
 export function getTopCharacters() {
     const sortedCharactersByEpisodes = [...charactersData].sort((a, b) => b.episode.length - a.episode.length);
-    const topCharacters = sortedCharactersByEpisodes.slice(0, 3).map((character) => ({
-        id: character.id,
-        name: character.name,
-        episodeCount: character.episode.length,
-    }));
-
-    if (topCharacters.length === 0) {
-        throw new Error('No top 3 characters appeared in most episodes.');
-    }
+    const topCharacters = sortedCharactersByEpisodes.slice(0, 3).map((character) => character);
 
     return topCharacters;
 }
 
-//get status that is assigned to the most characters
+
+/**
+ * Get status that is assigned to the most characters
+ *
+ * @returns {string} - The status that is assigned to the most characters.
+ * @throws {Error} - Throws an error if there is no status that is assigned to the most characters.
+ */
 export function getMostAssignedStatus() {
     const statusCountMap: { [status: string]: number } = {};
     charactersData.forEach((character) => {
@@ -44,9 +62,14 @@ export function getMostAssignedStatus() {
     return mostAssignedStatus;
 }
 
-//get location with the most characters of the species “human”
+/**
+ * Get location with the most characters of the species “human”
+ *
+ * @returns {string} - The location with the most characters of the species "human".
+ * @throws {Error} - Throws an error if there is no location with the most characters of the species "human".
+ */
 export function getLocationWithMostHumans() {
-    const humanCharacters = charactersData.filter((character) => character.species === 'Human');
+    const humanCharacters = charactersData.filter((character) => character.species.toLowerCase() === 'human');
     const locationCountMap: { [location: string]: number } = {};
     humanCharacters.forEach((character) => {
         locationCountMap[character.location.name] = (locationCountMap[character.location.name] || 0) + 1;
@@ -62,9 +85,14 @@ export function getLocationWithMostHumans() {
     return locationWithMostHumans;
 }
 
-//get species with the most male characters
+/**
+ * Get species with the most male characters
+ *
+ * @returns {string} - The species with the most male characters.
+ * @throws {Error} - Throws an error if there is no species with the most male characters.
+ */
 export function getSpeciesWithMostMales() {
-    const maleCharacters = charactersData.filter((character) => character.gender === 'Male');
+    const maleCharacters = charactersData.filter((character) => character.gender.toLowerCase() === 'male');
     const speciesCountMap: { [species: string]: number } = {};
     maleCharacters.forEach((character) => {
         speciesCountMap[character.species] = (speciesCountMap[character.species] || 0) + 1;
