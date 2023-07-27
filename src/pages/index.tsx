@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
-import CharacterList from '@/components/CharactersList/CharactersList';
+import CharacterList from '@/components/characters_list/CharactersList';
 import { CharactersProps, CharactersResponseData } from '@/types/characters.type';
 import { Service } from '@/config/service';
 import { useState } from 'react';

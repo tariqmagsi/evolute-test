@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 // import Navbar from '@/components/Navbar/Navbar';
 import { ToastContainer } from 'react-toastify';
-import Footer from '@/components/Footer/Footer';
+import Footer from '@/components/footer/Footer';
 
 /** 
  * Layout Component

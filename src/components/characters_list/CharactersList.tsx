@@ -1,6 +1,6 @@
 import { Character } from '@/types/global.type';
 import React from 'react';
-import CharacterCard from '../CharacterCard/CharacterCard';
+import CharacterCard from '../character_card/CharacterCard';
 
 export interface CharacterListProps {
   characters: Character[];
