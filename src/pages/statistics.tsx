@@ -53,7 +53,7 @@ const Statistics: React.FC<InferGetServerSidePropsType<typeof getServerSideProps
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={`min-h-screen flex flex-col w-full items-center p-24 ${inter.className}`}>
-                <div className='mb-4 text-3xl text-gray-900'>Statistics</div>
+                <div className='mb-4 text-3xl text-900'>Statistics</div>
                 <Card>
                     <b>Top Characters:</b>
                     <div className='flex flex-row flex-wrap justify-around'>

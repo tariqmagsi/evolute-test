@@ -79,7 +79,7 @@ const Characters: React.FC<InferGetServerSidePropsType<typeof getServerSideProps
             <main className={`min-h-screen flex flex-col justify-between items-center p-24 ${inter.className}`}>
                 {characters.length ?
                     <>
-                        <div className='mb-4 text-3xl text-gray-900'>Characters</div>
+                        <div className='mb-4 text-3xl text-900'>Characters</div>
                         <div className="flex flex-row flex-wrap justify-around gap-20 mt-10">
                             <CharacterList characters={characters} />
                         </div>

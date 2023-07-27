@@ -49,14 +49,14 @@ const CharacterDetail: React.FC<InferGetServerSidePropsType<typeof getServerSide
         <>
             <Head>
                 <title>Evolute Test - Character Detail</title>
-                <meta name="description" content="List of the character" />
+                <meta name="description" content="Character detail" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={`min-h-screen flex flex-col justify-between items-center p-24 ${inter.className}`}>
                 {character.id ?
                     <>
-                        <div className='mb-4 text-3xl text-gray-900'>{character.name}</div>
+                        <div className='mb-4 text-3xl text-900'>{character.name}</div>
                         <div className="block sm:gap-10">
                             <picture>
                                 <img className="w-full mb-4 rounded" src={character.image} alt={character.name} />
