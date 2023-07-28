@@ -1,4 +1,5 @@
 import charactersData from '@/data/evo-task-data.json';
+import { CharactersProps } from '@/types/characters.type';
 import { Character } from '@/types/global.type';
 
 /**
@@ -8,22 +9,26 @@ import { Character } from '@/types/global.type';
  * @param {number} pageSize - The number of characters per page.
  * @returns {Object} - An object containing the characters list and the total number of characters.
  */
-export function getCharacters(page: number, pageSize: number) {
+export function getCharacters(page: number, pageSize: number): CharactersProps {
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const characters: Character[] = charactersData.slice(startIndex, endIndex);
 
-    return {characters, totalCharacter: charactersData.length};
+    return {characters, totalCharacters: charactersData.length};
 }
 
 /**
  * Get Character
  *
  * @param {number} id - The ID of the character.
- * @returns {Character | undefined | null} - The character data, or undefined if the character is not found.
+ * @returns {Character} - The character data, or undefined if the character is not found.
  */
-export function getCharacter(id: number) {
+export function getCharacter(id: number): Character {
     const character = charactersData.find(char => char.id === id);
+
+    if(!character) {
+        throw new Error('No character found.');
+    }
     
     return character;
 }
@@ -34,7 +39,7 @@ export function getCharacter(id: number) {
  *
  * @returns {Character[]} - An array of the top 3 characters that appeared in the most episodes.
  */
-export function getTopCharacters() {
+export function getTopCharacters(): Character[] {
     const sortedCharactersByEpisodes = [...charactersData].sort((a, b) => b.episode.length - a.episode.length);
     const topCharacters = sortedCharactersByEpisodes.slice(0, 3).map((character) => character);
 
@@ -48,7 +53,7 @@ export function getTopCharacters() {
  * @returns {string} - The status that is assigned to the most characters.
  * @throws {Error} - Throws an error if there is no status that is assigned to the most characters.
  */
-export function getMostAssignedStatus() {
+export function getMostAssignedStatus(): string {
     const statusCountMap: { [status: string]: number } = {};
     charactersData.forEach((character) => {
         statusCountMap[character.status] = (statusCountMap[character.status] || 0) + 1;
@@ -68,7 +73,7 @@ export function getMostAssignedStatus() {
  * @returns {string} - The location with the most characters of the species "human".
  * @throws {Error} - Throws an error if there is no location with the most characters of the species "human".
  */
-export function getLocationWithMostHumans() {
+export function getLocationWithMostHumans(): string {
     const humanCharacters = charactersData.filter((character) => character.species.toLowerCase() === 'human');
     const locationCountMap: { [location: string]: number } = {};
     humanCharacters.forEach((character) => {
@@ -91,7 +96,7 @@ export function getLocationWithMostHumans() {
  * @returns {string} - The species with the most male characters.
  * @throws {Error} - Throws an error if there is no species with the most male characters.
  */
-export function getSpeciesWithMostMales() {
+export function getSpeciesWithMostMales(): string {
     const maleCharacters = charactersData.filter((character) => character.gender.toLowerCase() === 'male');
     const speciesCountMap: { [species: string]: number } = {};
     maleCharacters.forEach((character) => {

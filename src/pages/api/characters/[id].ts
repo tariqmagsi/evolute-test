@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getCharacter } from '@/utils/apiHelper';
 
-
 /**
  * API Route for getting character data by ID.
  *

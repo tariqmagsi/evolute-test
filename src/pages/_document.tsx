@@ -7,7 +7,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
  *
  * @returns {JSX.Element} - The JSX element representing the custom document structure.
  */
-export default function Document() {
+export default function Document(): JSX.Element {
   return (
     <Html lang="en">
       <Head />

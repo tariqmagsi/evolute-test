@@ -11,7 +11,7 @@ export const Apis = {
  * @param {string} endPoint - The API endpoint to make the GET request to.
  * @returns {Promise<Response>} - The response object representing the result of the GET request.
  */
-export const get = async (endPoint: string) => {
+export const get = async (endPoint: string): Promise<Response> => {
     try {
         const characters = await fetch(BASE_URL + endPoint);
         return characters;

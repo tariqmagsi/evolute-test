@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import CharacterList from '@/components/characters_list/CharactersList';
-import { CharactersProps, CharactersResponseData } from '@/types/characters.type';
+import { CharactersProps } from '@/types/characters.type';
 import { Service } from '@/config/service';
 import { useState } from 'react';
 import { Pagination } from 'antd';
@@ -29,9 +29,9 @@ export const getServerSideProps: GetServerSideProps<CharactersProps> = async (co
         if (!charactersResponse.ok) {
             throw new Error('Failed to fetch characters.');
         }
-        const charactersData: CharactersResponseData = await charactersResponse.json();
+        const charactersData = await charactersResponse.json();
         const characters = charactersData.characters;
-        const totalCharacters = charactersData.totalCharacter
+        const totalCharacters = charactersData.totalCharacters
 
         return {
             props: {
@@ -56,7 +56,7 @@ export const getServerSideProps: GetServerSideProps<CharactersProps> = async (co
  * @param {CharactersProps} characters - The fetched characters data from the server-side props.
  * @returns {JSX.Element} - The JSX element representing the characters list page.
  */
-const Characters: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ characters, totalCharacters }) => {
+const Characters: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ characters, totalCharacters }: CharactersProps): JSX.Element => {
     const router = useRouter();
     const [currentPage, setCurrentPage] = useState(router.query?.page ? Number(router.query?.page) : 1);
 

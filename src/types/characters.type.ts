@@ -4,8 +4,3 @@ export interface CharactersProps {
     characters: Character[];
     totalCharacters: number;
 }
-
-export interface CharactersResponseData {
-    characters: Character[];
-    totalCharacter: number;
-} 

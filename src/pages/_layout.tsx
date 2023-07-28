@@ -11,7 +11,7 @@ import Navbar from '@/components/navbar/Navbar';
  * @param {PropsWithChildren} props - The component props, including the children elements.
  * @returns {JSX.Element} - The JSX element representing the layout of the application.
  */
-const Layout: React.FC<PropsWithChildren> = ({ children }) => (
+const Layout: React.FC<PropsWithChildren> = ({ children }: PropsWithChildren): JSX.Element => (
   <>
     <Navbar />
     <main>

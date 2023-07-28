@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getCharacters } from '@/utils/apiHelper';
 
-
 /**
  * API Route for getting Characters List with a limit per page.
  *

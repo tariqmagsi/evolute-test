@@ -11,7 +11,7 @@ import 'tailwindcss/tailwind.css';
  * @param {AppProps} props - The component props, including the `Component` and `pageProps`.
  * @returns {JSX.Element} - The JSX element representing the root component of the application.
  */
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return <Layout>
     <Component {...pageProps} />
   </Layout>

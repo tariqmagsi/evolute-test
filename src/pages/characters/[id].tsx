@@ -4,6 +4,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { Card } from 'antd';
 import { CharacterProps } from '@/types/character/[id].type';
 import { Service } from '@/config/service';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,11 +12,12 @@ const inter = Inter({ subsets: ['latin'] })
 /**
  * Fetch data of character using api => /api/characters/[id]
  *
- * @param {object} params - The route parameters containing the character ID.
- * @returns {object} - The server-side props containing the character data.
+ * @param context - The route parameters containing the character ID.
+ * @returns - The server-side props containing the character data.
  */
-export const getServerSideProps: GetServerSideProps<CharacterProps> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<CharacterProps> = async (context) => {
     try {
+        const { params } = context
         const id = params?.id
 
         const charactersResponse = await Service.characters(`/${id}`)
@@ -32,7 +34,7 @@ export const getServerSideProps: GetServerSideProps<CharacterProps> = async ({ p
     } catch (error) {
         return {
             props: {
-                character: [],
+                character: null
             },
         };
     }
@@ -41,10 +43,10 @@ export const getServerSideProps: GetServerSideProps<CharacterProps> = async ({ p
 /**
  * Functional Component for details page of character
  *
- * @param {object} character - The character data obtained from the server-side props.
+ * @param {CharacterProps} character - The character data obtained from the server-side props.
  * @returns {JSX.Element} - The JSX element representing the character detail page.
  */
-const CharacterDetail: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ character }) => {
+const CharacterDetail: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ character }: CharacterProps): JSX.Element => {
     return (
         <>
             <Head>
@@ -54,7 +56,7 @@ const CharacterDetail: React.FC<InferGetServerSidePropsType<typeof getServerSide
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={`min-h-screen flex flex-col justify-between items-center p-24 ${inter.className}`}>
-                {character.id ?
+                {character ?
                     <>
                         <div className='mb-4 text-3xl text-900'>{character.name}</div>
                         <div className="block sm:gap-10">
@@ -76,7 +78,10 @@ const CharacterDetail: React.FC<InferGetServerSidePropsType<typeof getServerSide
                     </>
                     :
                     <div>
-                        Character Not Found
+                        Character Not Found. Click to go {" "}
+                        <Link href={'/'} style={{color: 'blue'}}>
+                            Home
+                        </Link>
                     </div>
                 }
             </main>

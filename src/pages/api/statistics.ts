@@ -2,7 +2,6 @@ import { Character } from '@/types/global.type';
 import { getLocationWithMostHumans, getMostAssignedStatus, getSpeciesWithMostMales, getTopCharacters } from '@/utils/apiHelper';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-
 /**
  * API Route for getting statistics of characters.
  *

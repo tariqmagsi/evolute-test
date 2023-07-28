@@ -43,7 +43,7 @@ export const getServerSideProps: GetServerSideProps<StatisticsProps> = async () 
  * @param {StatisticsProps} charactersStatistics - The fetched characters statistics data from the server-side props.
  * @returns {JSX.Element} - The JSX element representing the statistics page.
  */
-const Statistics: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ charactersStatistics }) => {
+const Statistics: React.FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ charactersStatistics }: StatisticsProps): JSX.Element => {
     return (
         <>
             <Head>
