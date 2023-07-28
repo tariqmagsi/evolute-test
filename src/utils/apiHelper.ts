@@ -21,7 +21,8 @@ export function getCharacters(page: number, pageSize: number): CharactersProps {
  * Get Character
  *
  * @param {number} id - The ID of the character.
- * @returns {Character} - The character data, or undefined if the character is not found.
+ * @returns {Character} - The character data.
+ * @throws {Error} - Throws an error if there is no data found.
  */
 export function getCharacter(id: number): Character {
     const character = charactersData.find(char => char.id === id);
